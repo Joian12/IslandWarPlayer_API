@@ -40,7 +40,20 @@ namespace IslandWarPlayer_API.Controllers
                 return List;
             }
         }
-    }
 
-    
+        [HttpPost("SaveDar")]
+        public async Task<IActionResult> SavePlayer(PlayerInfoDTO player)
+        {
+            var newPlayer = new PlayerInfo() {
+                FirstName = player.FirstName,
+                LastName = player.LastName,
+                Username = player.Username,
+                Password = player.Password,
+            };
+
+            await _DBContext.playerInfos.AddAsync(newPlayer);
+            await _DBContext.SaveChangesAsync();
+            return Ok(newPlayer);
+        }
+    }
 }
