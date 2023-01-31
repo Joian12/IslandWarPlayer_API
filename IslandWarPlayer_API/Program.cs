@@ -11,8 +11,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddEntityFrameworkMySQL().AddDbContext<DBContext>(options => {
-    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+//builder.Services.AddEntityFrameworkMySQL().AddDbContext<DBContext>(options => {
+//   options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+//});
+
+builder.Services.AddDbContext<DBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();

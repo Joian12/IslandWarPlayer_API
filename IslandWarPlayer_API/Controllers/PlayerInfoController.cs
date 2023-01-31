@@ -41,7 +41,7 @@ namespace IslandWarPlayer_API.Controllers
             }
         }
 
-        [HttpPost("SaveDar")]
+        [HttpPost("SavePlayer")]
         public async Task<IActionResult> SavePlayer(PlayerInfoDTO player)
         {
             var newPlayer = new PlayerInfo() {
